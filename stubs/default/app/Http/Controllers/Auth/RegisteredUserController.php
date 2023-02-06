@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Mahdialikhani\OtpAuthenticator\Events\Authenticated;
 
 class RegisteredUserController extends Controller
 {
@@ -36,5 +37,9 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        event(new Authenticated($user));
+
+        return redirect()->to(route('verify'));
     }
 }
