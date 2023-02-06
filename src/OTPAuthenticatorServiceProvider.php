@@ -3,6 +3,7 @@
 namespace Mahdialikhani\OtpAuthenticator;
 
 use Illuminate\Support\ServiceProvider;
+use Mahdialikhani\OtpAuthenticator\Console\InstallCommand;
 
 class OTPAuthenticatorServiceProvider extends ServiceProvider
 {
@@ -12,5 +13,8 @@ class OTPAuthenticatorServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->commands([
+            InstallCommand::class,
+        ]);
     }
 }
