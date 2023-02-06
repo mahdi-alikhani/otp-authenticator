@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
+use App\Notifications\VerificationNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
@@ -21,11 +23,15 @@ class RegistrationTest extends TestCase
     {
         Notification::fake();
 
-        $this->post('/register', [
+        $response = $this->post('/register', [
             'name' => 'Test User',
-            'phone' => '09301111111',
+            'phone' => '09305721646',
         ]);
 
-        $this->assertDatabaseHas('users', ['phone' => '09301111111']);
+        $user = User::where('phone', '09305721646')->first();
+        
+        Notification::assertSentTo($user, VerificationNotification::class);
+
+        $response->assertRedirect(route('verify'));
     }
 }
