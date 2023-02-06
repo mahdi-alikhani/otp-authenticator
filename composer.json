@@ -1,0 +1,19 @@
+{
+    "name": "mahdialikhani/otp-authenticator",
+    "description": "This package assists with authenticating users using OTP (One-Time Password) method.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mahdialikhani\\OtpAuthenticator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mahdi alikhani",
+            "email": "mahdi.alikhani687@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
