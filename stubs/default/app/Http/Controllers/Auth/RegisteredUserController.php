@@ -36,5 +36,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        event(new Authenticated($user));
+
     }
 }
