@@ -74,9 +74,12 @@ return (new GhasedakMessage)
 
 and done!
 
-<br/>
+You can use the Laravel documentation to use the <a href="https://laravel.com/docs/9.x/notifications#sms-notifications">vonage</a> service or create a personalized service by following these steps:
+- Create a custom class in **\App\Notifications\Messages** that implements the **Messageable** interface.
+- Define the send method for sending your text message.
+- Use this class in the **\App\Notifications\VerificationNotification** file, similar to other services.
 
-To integrate alternative text messaging services, create a custom class in **\App\Notifications\Messages** and implement the **"Messageable"** interface. In your class, define the send method for sending your text message. Then, use it in the **\App\Notifications\VerificationNotification** file just like other services. For convenience, you can extend your class from the **"SimpleMessage"** class to access the recipient and message text.
+**To conveniently access the recipient and message text, extend your message class from the "SimpleMessage" class.**
 
 for example:
 ```php
@@ -178,14 +181,6 @@ class VerificationNotification extends Notification
             ->line('Thank you for using our application!');
     }
 }
-```
-<br/>
-
-# Testing
-Run the tests with:
-
-```php
-composer test
 ```
 <br/>
 
